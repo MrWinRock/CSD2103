@@ -1,7 +1,6 @@
 import random
 randomNumber = random.randint(1, 100)
 correct = False
-print(randomNumber)
 
 for i in range(3):
     userInput = int(input())

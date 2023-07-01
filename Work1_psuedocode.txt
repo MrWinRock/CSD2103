@@ -1,0 +1,19 @@
+import random
+
+randomNumber = random between 1 - 100
+correct is False
+
+for i = 0-2 then
+    userInput = input
+
+    if userInput > randomNumber then
+        print "Too high, try again"
+    else if userInput < randomNumber then
+        print "Too low, try again"
+    else then
+        print "Your answer is correct"
+        correct is True
+        break the loop
+
+if not False then
+    print "Out of attempts"

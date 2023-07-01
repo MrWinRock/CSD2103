@@ -3,10 +3,9 @@ import java.util.Scanner;
 
 class Work1 {
     public static void main(String[] args) {
-        
+
         Random random = new Random();
         int randomNumber = random.nextInt(100) + 1;
-        System.out.println(randomNumber);
 
         Scanner input = new Scanner(System.in);
 
@@ -15,11 +14,9 @@ class Work1 {
 
             if (userInput > randomNumber) {
                 System.out.println("Too high, try again");
-            }
-            else if (userInput < randomNumber) {
+            } else if (userInput < randomNumber) {
                 System.out.println("Too low, try again");
-            }
-            else {
+            } else {
                 System.out.println("Your answer is correct");
                 return;
             }
