@@ -6,6 +6,7 @@ class Work1 {
 
         Random random = new Random();
         int randomNumber = random.nextInt(100) + 1;
+        boolean correct = false;
 
         Scanner input = new Scanner(System.in);
 
@@ -18,10 +19,13 @@ class Work1 {
                 System.out.println("Too low, try again");
             } else {
                 System.out.println("Your answer is correct");
-                return;
+                correct = true;
+                break;
             }
         }
 
-        System.out.println("Out of attempts");
+        if (!correct) {
+            System.out.println("Out of attempts");
+        }
     }
 }
