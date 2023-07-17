@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Work2 {
+public class StackProgram {
 
     public static String infixToPostfix(String infix) {
         String postfix = "";
@@ -54,11 +54,9 @@ public class Work2 {
     }
 
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        String infix = input.nextLine();
+        String infix = "A+B+C";
         
         System.out.println(infixToPostfix(infix));
-        input.close();
     }    
 
 }
