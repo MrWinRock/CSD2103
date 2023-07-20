@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Stack;
 
 public class DecimalToBinary {
 
@@ -20,6 +20,6 @@ public class DecimalToBinary {
     }
     
     public static void main(String[] args) {
-        System.out.println(decimalToBinary(69));
+        System.out.println(decimalToBinary(10));
     }
 }
