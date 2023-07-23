@@ -15,43 +15,17 @@ public class ArrayAlgorithm {
     }
 
     public static int[] removeTheElement(int[] arr, int index) {
-        int n = arr.length;
-        int[] newArray = new int[n - 1];
+        int[] newArray = new int[arr.length - 1];
+        for (int i = 0, k = 0; i < arr.length; i++) {
 
-        // Perform a binary search to find the index in O(log n) time
-        int startIndex = 0;
-        int endIndex = n - 1;
-        int centerIndex = 0;
-
-        while (startIndex <= endIndex) {
-            centerIndex = startIndex + (endIndex - startIndex) / 2;
-            if (centerIndex == index) {
-                break;
-            } else if (centerIndex < index) {
-                startIndex = centerIndex + 1;
-            } else {
-                endIndex = centerIndex - 1;
+            if (i == index) {
+                continue;
             }
+            newArray[k++] = arr[i];
         }
-        System.arraycopy(arr, 0, newArray, 0, centerIndex);
-        System.arraycopy(arr, centerIndex + 1, newArray, centerIndex, n - centerIndex
-                - 1);
 
         return newArray;
     }
-
-    // public static int[] removeTheElement(int[] arr, int index) {
-    // int[] newArray = new int[arr.length - 1];
-    // for (int i = 0, k = 0; i < arr.length; i++) {
-
-    // if (i == index) {
-    // continue;
-    // }
-    // newArray[k++] = arr[i];
-    // }
-
-    // return newArray;
-    // }
 
     public static void findNumber(int[] a1, int[] a2) {
 
