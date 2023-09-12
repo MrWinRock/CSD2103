@@ -1,43 +1,91 @@
-// class BTNode<T> {
-//     private T data;
-//     private BTNode<T> leftChild;
-//     private BTNode<T> rightChild;
-//     private BTNode<T> parent;
+class TreeNode {
+    int data;
+    TreeNode left;
+    TreeNode right;
 
-//     public BTNode(T data) {
-//         this.data = data;
-//         this.leftChild = null;
-//         this.rightChild = null;
-//         this.parent = null;
-//     }
-    
-// }
+    public TreeNode(int data) {
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    }
+}
 
-// class BinaryTree<T> {
-//     private BTNode<T> root;
-//     BTNode node = new BTNode(root);
+class BinarySearchTree {
+    TreeNode root;
 
-//     public int countNodesWithOneChild(BTNode<T> node) {
-//         if (node == null) return 0;
+    public void insert(int value) {
+        root = insertRec(root, value);
+    }
 
-//         int count = 0;
-//         if ((node.leftChild == null && node.rightChild != null) ||
-//             (node.leftChild != null && node.rightChild == null)) {
-//                 count = 1;
-//         }
+    private TreeNode insertRec(TreeNode root, int value) {
+        if (root == null) {
+            root = new TreeNode(value);
+            return root;
+        }
 
-//         return count + countNodesWithOneChild(node.leftChild) + countNodesWithOneChild(node.rightChild);
-//     }
+        if (value < root.data) {
+            root.left = insertRec(root.left, value);
+        } else if (value > root.data) {
+            root.right = insertRec(root.right, value);
+        }
 
-//     public int numberOfLeaves(BTNode<T> node) {
-//         if (node == null) return 0;
+        return root;
+    }
 
-//         if (node.leftChild == null && node.rightChild == null) return 1;
+    public void deleteNode(int value) {
+        root = deleteNodeRec(root, value);
+    }
 
-//         return numberOfLeaves(node.leftChilde) + numberOfLeaves(node.rightChild);
-//     }
-// }
+    private TreeNode deleteNodeRec(TreeNode root, int value) {
+        if (root == null)
+            return root;
 
-// public class Main {
-    
-// }
+        if (value < root.data) {
+            root.left = deleteNodeRec(root.left, value);
+        } else if (value > root.data) {
+            root.right = deleteNodeRec(root.right, value);
+        } else {
+            if (root.left == null) {
+                return root.right;
+            } else if (root.right == null) {
+                return root.left;
+            }
+
+            root.data = minValue(root.right);
+
+            root.right = deleteNodeRec(root.right, root.data);
+        }
+        return root;
+    }
+
+    private int minValue(TreeNode root) {
+        int minValue = root.data;
+        while (root.left != null) {
+            minValue = root.left.data;
+            root = root.left;
+        }
+        return minValue;
+    }
+
+    public void inorderTraversal(TreeNode root) {
+        if (root != null) {
+            inorderTraversal(root.left);
+            System.out.print(root.data + " ");
+            inorderTraversal(root.right);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        int[] values = { 7, 8, 3, 5, 6, 4, 1, 2 };
+
+        BinarySearchTree bst = new BinarySearchTree();
+
+        for (int value : values) {
+            bst.insert(value);
+        }
+
+        bst.inorderTraversal(bst.root);
+    }
+}
